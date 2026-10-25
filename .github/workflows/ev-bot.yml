@@ -3,6 +3,9 @@ name: Ev ilanı kontrol
 on:
   schedule:
     - cron: "*/20 * * * *"   # her 20 dakikada bir (GitHub bazen birkaç dk geciktirir)
+  push:
+    branches: [main]
+    paths: ["bot.py", "config.yaml", ".github/workflows/**"]
   workflow_dispatch:          # Actions sekmesinden elle çalıştırmak için
 
 permissions:
