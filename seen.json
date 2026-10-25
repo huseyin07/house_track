@@ -147,15 +147,7 @@
 "emlakjet:20013203": 1792951483,
 "emlakjet:20013189": 1792951483
 },
-"errors": {
-"Hepsiemlak - Konaklı": 2,
-"Hepsiemlak - Payallar": 2,
-"Hepsiemlak - Saray": 2,
-"Hepsiemlak - Cumhuriyet": 2,
-"Hepsiemlak - Hacet": 2,
-"Hepsiemlak - Alanya (diğer merkez mahalleleri)": 2,
-"Sahibinden - Alanya": 2
-},
+"errors": {},
 "initialized": [
 "https://www.emlakjet.com/satilik-daire/antalya-alanya-konakli-mahallesi?filtreler=ilan-sayisi=50",
 "https://www.emlakjet.com/satilik-daire/antalya-alanya-payallar-mahallesi?filtreler=ilan-sayisi=50",
@@ -175,14 +167,5 @@
 "error": null
 }
 },
-"chat_id": 1339929901,
-"last_error": {
-"Hepsiemlak - Konaklı": "HTTP 403 Just a moment...",
-"Hepsiemlak - Payallar": "HTTP 403 Just a moment...",
-"Hepsiemlak - Saray": "HTTP 403 Just a moment...",
-"Hepsiemlak - Cumhuriyet": "HTTP 403 Just a moment...",
-"Hepsiemlak - Hacet": "HTTP 403 Just a moment...",
-"Hepsiemlak - Alanya (diğer merkez mahalleleri)": "HTTP 403 Just a moment...",
-"Sahibinden - Alanya": "HTTP 403 Just a moment..."
-}
+"chat_id": 1339929901
 }

@@ -336,6 +336,9 @@ def main():
         if not url:
             continue
         site, name = s["site"], s.get("name", s["site"])
+        only = [x.strip() for x in os.environ.get("SITES", "").split(",") if x.strip()]
+        if only and site not in only:
+            continue
         try:
             html = fetch(url)
             if looks_blocked(html):
