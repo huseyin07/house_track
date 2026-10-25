@@ -31,7 +31,7 @@ jobs:
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-          SITES: emlakjet,sahibinden   # hepsiemlak GitHub sunucularını engelliyor (Cloudflare)
+          SITES: emlakjet   # sahibinden/hepsiemlak GitHub sunucularını engelliyor; Mac'te çalıştırılabilir
           BROWSER_SITES: sahibinden
         run: xvfb-run -a python bot.py
       - name: Görülen ilanları kaydet
