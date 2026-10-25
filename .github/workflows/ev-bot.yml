@@ -18,20 +18,22 @@ concurrency:
 jobs:
   check:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
           cache: pip
-      - run: pip install -r requirements.txt
+      - run: pip install -r requirements.txt playwright
+      - run: python -m playwright install --with-deps chromium
       - name: İlanları kontrol et
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-          SITES: emlakjet   # hepsiemlak ve sahibinden GitHub sunucularını engelliyor (Cloudflare)
-        run: python bot.py
+          SITES: emlakjet,sahibinden   # hepsiemlak GitHub sunucularını engelliyor (Cloudflare)
+          BROWSER_SITES: sahibinden
+        run: xvfb-run -a python bot.py
       - name: Görülen ilanları kaydet
         run: |
           git config user.name "ev-bot"

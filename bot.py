@@ -83,7 +83,41 @@ def load_json(path: Path, default):
         return default
 
 
+BROWSER_SITES = [x.strip() for x in os.environ.get("BROWSER_SITES", "").split(",") if x.strip()]
+_pw = {"ctx": None}
+
+
+def fetch_browser(url: str) -> str:
+    """Cloudflare korumalı siteler için gerçek tarayıcı (Playwright)."""
+    if _pw["ctx"] is None:
+        from playwright.sync_api import sync_playwright
+        p = sync_playwright().start()
+        b = p.chromium.launch(headless=False, args=["--disable-blink-features=AutomationControlled"])
+        ctx = b.new_context(locale="tr-TR", timezone_id="Europe/Istanbul",
+                            viewport={"width": 1366, "height": 850})
+        ctx.add_init_script("Object.defineProperty(navigator,'webdriver',{get:()=>undefined})")
+        _pw.update(p=p, b=b, ctx=ctx, page=ctx.new_page())
+    page = _pw["page"]
+    page.goto(url, wait_until="domcontentloaded", timeout=60000)
+    for _ in range(30):  # challenge geçene kadar bekle (en fazla ~30 sn)
+        t = (page.title() or "").lower()
+        if "just a moment" not in t and "bir dakika" not in t:
+            break
+        page.wait_for_timeout(1000)
+    page.wait_for_timeout(1500)
+    return page.content()
+
+
+def site_of(url: str) -> str:
+    for k, b in BASES.items():
+        if url.startswith(b):
+            return k
+    return ""
+
+
 def fetch(url: str) -> str:
+    if site_of(url) in BROWSER_SITES:
+        return fetch_browser(url)
     r = http.get(url, headers=HEADERS, timeout=30, **IMPERSONATE)
     if r.status_code != 200:
         t = re.search(r"<title>(.*?)</title>", r.text or "", re.S)
