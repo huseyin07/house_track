@@ -98,12 +98,31 @@ def fetch_browser(url: str) -> str:
         ctx.add_init_script("Object.defineProperty(navigator,'webdriver',{get:()=>undefined})")
         _pw.update(p=p, b=b, ctx=ctx, page=ctx.new_page())
     page = _pw["page"]
-    page.goto(url, wait_until="domcontentloaded", timeout=60000)
-    for _ in range(30):  # challenge geçene kadar bekle (en fazla ~30 sn)
-        t = (page.title() or "").lower()
-        if "just a moment" not in t and "bir dakika" not in t:
+    def challenged():
+        try:
+            t = (page.title() or "").lower()
+        except Exception:
+            return True  # sayfa yönlenirken başlık okunamaz
+        return "just a moment" in t or "bir dakika" in t
+
+    for attempt in range(3):
+        if attempt == 0:
+            page.goto(url, wait_until="domcontentloaded", timeout=60000)
+        else:
+            try:
+                page.reload(wait_until="domcontentloaded", timeout=60000)
+            except Exception:
+                page.goto(url, wait_until="domcontentloaded", timeout=60000)
+        for _ in range(45):  # challenge geçene kadar bekle
+            if not challenged():
+                break
+            page.wait_for_timeout(1000)
+        if not challenged():
             break
-        page.wait_for_timeout(1000)
+    try:
+        page.wait_for_load_state("networkidle", timeout=15000)
+    except Exception:
+        pass
     page.wait_for_timeout(1500)
     return page.content()
 
