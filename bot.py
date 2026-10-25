@@ -379,6 +379,13 @@ def main():
                 raise RuntimeError("bot korumasına takıldı")
             listings = extract_listings(site, html, url)
             if not listings:
+                sp = BeautifulSoup(html, "html.parser")
+                state.setdefault("page_debug", {})[name] = {
+                    "title": (sp.title.string if sp.title else "")[:120],
+                    "len": len(html),
+                    "text": re.sub(r"\s+", " ", sp.get_text(" "))[:400],
+                    "sample_links": [a["href"] for a in sp.find_all("a", href=True) if "/ilan/" in a["href"]][:5],
+                }
                 raise RuntimeError("sayfada ilan bulunamadı (site yapısı değişmiş olabilir)")
             errors.pop(name, None)
             state.setdefault("last_error", {}).pop(name, None)
