@@ -24,7 +24,7 @@ except ImportError:  # pragma: no cover
     IMPERSONATE = {}
 
 ROOT = Path(__file__).parent
-SEEN_FILE = ROOT / "seen.json"
+SEEN_FILE = Path(os.environ.get("STATE_FILE") or ROOT / "seen.json")
 CONFIG_FILE = ROOT / "config.yaml"
 
 TG_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", "").strip()
@@ -92,7 +92,7 @@ def fetch_browser(url: str) -> str:
     if _pw["ctx"] is None:
         from playwright.sync_api import sync_playwright
         p = sync_playwright().start()
-        b = p.chromium.launch(headless=False, args=["--disable-blink-features=AutomationControlled"])
+        b = p.chromium.launch(headless=os.environ.get("HEADLESS") == "1", args=["--disable-blink-features=AutomationControlled"])
         ctx = b.new_context(locale="tr-TR", timezone_id="Europe/Istanbul",
                             viewport={"width": 1366, "height": 850})
         ctx.add_init_script("Object.defineProperty(navigator,'webdriver',{get:()=>undefined})")
