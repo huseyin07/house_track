@@ -1,5 +1,19 @@
 {
 "seen": {},
 "errors": {},
-"initialized": []
+"initialized": [],
+"telegram_debug": {
+"token_len": 46,
+"token_has_space": false,
+"getMe": {
+"ok": true,
+"username": "houseandbuyaabot",
+"error": null
+},
+"getUpdates": {
+"ok": true,
+"count": 0,
+"error": null
+}
+}
 }
