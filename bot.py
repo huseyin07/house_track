@@ -86,7 +86,8 @@ def load_json(path: Path, default):
 def fetch(url: str) -> str:
     r = http.get(url, headers=HEADERS, timeout=30, **IMPERSONATE)
     if r.status_code != 200:
-        raise RuntimeError(f"HTTP {r.status_code}")
+        t = re.search(r"<title>(.*?)</title>", r.text or "", re.S)
+        raise RuntimeError(f"HTTP {r.status_code} {t.group(1).strip()[:80] if t else ''}")
     return r.text
 
 
@@ -343,8 +344,10 @@ def main():
             if not listings:
                 raise RuntimeError("sayfada ilan bulunamadı (site yapısı değişmiş olabilir)")
             errors.pop(name, None)
+            state.setdefault("last_error", {}).pop(name, None)
         except Exception as e:
             print(f"{name}: HATA {e}")
+            state.setdefault("last_error", {})[name] = str(e)[:200]
             n = errors.get(name, 0) + 1
             errors[name] = n
             if n == 3:  # 3 kez üst üste başarısızsa bir kere haber ver
