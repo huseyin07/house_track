@@ -1,4 +1,4 @@
-"""
+"""  (v1.1)
 Ev ilanı takip botu
 Emlakjet, Hepsiemlak ve Sahibinden arama sayfalarını izler,
 kriterlere uyan YENİ ilanları Telegram'a gönderir.
