@@ -148,7 +148,7 @@
 "emlakjet:20013189": 1792951483
 },
 "errors": {
-"Sahibinden - Alanya": 2
+"Sahibinden - Alanya": 3
 },
 "initialized": [
 "https://www.emlakjet.com/satilik-daire/antalya-alanya-konakli-mahallesi?filtreler=ilan-sayisi=50",
@@ -176,8 +176,8 @@
 "page_debug": {
 "Sahibinden - Alanya": {
 "title": "Bir dakika lütfen...",
-"len": 29166,
-"text": "Bir dakika lütfen... www.sahibinden.com Güvenlik doğrulaması yapılıyor Bu web sitesi, kötü niyetli botlara karşı korunmak için bir güvenlik hizmeti kullanıyor. Web sitesi bir bot olmadığınızı doğrularken bu sayfa görüntülenir. Doğrulama başarılı. www.sahibinden.com adresinin yanıt vermesi bekleniyor Enable JavaScript and cookies to continue Ray ID: a50330f87baf0f96 Cloudflare ile Performans ve Güv",
+"len": 29145,
+"text": "Bir dakika lütfen... www.sahibinden.com Güvenlik doğrulaması yapılıyor Bu web sitesi, kötü niyetli botlara karşı korunmak için bir güvenlik hizmeti kullanıyor. Web sitesi bir bot olmadığınızı doğrularken bu sayfa görüntülenir. Doğrulama başarılı. www.sahibinden.com adresinin yanıt vermesi bekleniyor Enable JavaScript and cookies to continue Ray ID: a50335b9cb97ce40 Cloudflare ile Performans ve Güv",
 "sample_links": []
 }
 }
