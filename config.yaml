@@ -1,0 +1,81 @@
+# ─── Ev ilanı takip botu ayarları ───────────────────────────────
+# Aşağıdaki "searches" bölümüne her sitede filtreleri uyguladığın
+# arama sonuç sayfasının linkini yapıştır. Aynı siteden birden fazla
+# link ekleyebilirsin (örn. Konaklı için ayrı, Payallar için ayrı).
+
+searches:
+  # ── Emlakjet ──
+  - site: emlakjet
+    name: "Emlakjet - Konaklı"
+    url: "https://www.emlakjet.com/satilik-daire/antalya-alanya-konakli-mahallesi?filtreler=ilan-sayisi=50"
+  - site: emlakjet
+    name: "Emlakjet - Payallar"
+    url: "https://www.emlakjet.com/satilik-daire/antalya-alanya-payallar-mahallesi?filtreler=ilan-sayisi=50"
+  - site: emlakjet
+    name: "Emlakjet - Alanya (merkez mahalleleri için)"
+    url: "https://www.emlakjet.com/satilik-daire/antalya-alanya?filtreler=ilan-sayisi=50"
+
+  # ── Hepsiemlak ──
+  - site: hepsiemlak
+    name: "Hepsiemlak - Konaklı"
+    url: "https://www.hepsiemlak.com/alanya-konakli-satilik/daire?p1=2000000&p2=3800000&sortField=CREATED_DATE&sortDirection=DESC"
+  - site: hepsiemlak
+    name: "Hepsiemlak - Payallar"
+    url: "https://www.hepsiemlak.com/payallar-satilik/daire?p1=2000000&p2=3800000&sortField=CREATED_DATE&sortDirection=DESC"
+  - site: hepsiemlak
+    name: "Hepsiemlak - Saray"
+    url: "https://www.hepsiemlak.com/alanya-saray-satilik/daire?p1=2000000&p2=3800000&sortField=CREATED_DATE&sortDirection=DESC"
+  - site: hepsiemlak
+    name: "Hepsiemlak - Cumhuriyet"
+    url: "https://www.hepsiemlak.com/alanya-cumhuriyet-satilik/daire?p1=2000000&p2=3800000&sortField=CREATED_DATE&sortDirection=DESC"
+  - site: hepsiemlak
+    name: "Hepsiemlak - Hacet"
+    url: "https://www.hepsiemlak.com/alanya-hacet-satilik/daire?p1=2000000&p2=3800000&sortField=CREATED_DATE&sortDirection=DESC"
+  - site: hepsiemlak
+    name: "Hepsiemlak - Alanya (diğer merkez mahalleleri)"
+    url: "https://www.hepsiemlak.com/alanya-satilik/daire?p1=2000000&p2=3800000&sortField=CREATED_DATE&sortDirection=DESC"
+
+  # ── Sahibinden (en yeni 50 ilan; mahalleyi bot süzer) ──
+  - site: sahibinden
+    name: "Sahibinden - Alanya"
+    url: "https://www.sahibinden.com/satilik-daire/antalya-alanya?sorting=date_desc&pagingSize=50&price_min=2000000&price_max=3800000"
+
+# Sitedeki filtrelere ek olarak bot da bunları kontrol eder.
+# (Linkte filtre unutulsa bile uymayan ilan sana gelmez.)
+filters:
+  price_min: 2000000
+  price_max: 3800000
+  m2_min: 50
+  building_age_max: 10
+  # Bu kat değerlerinden biri olan ilanlar elenir (küçük/büyük harf fark etmez)
+  excluded_floors:
+    - "zemin"
+    - "giriş"
+    - "yüksek giriş"
+    - "bahçe"
+    - "1"
+    - "1. kat"
+    - "bodrum"
+    - "kot"
+  # İlan metninde bunlardan biri geçmeli (boş bırakırsan kontrol edilmez)
+  location_keywords:
+    - "konaklı"
+    - "payallar"
+    - "alanya merkez"
+    # Alanya merkez mahalleleri
+    - "saray"
+    - "güller pınarı"
+    - "şekerhane"
+    - "hacet"
+    - "cumhuriyet"
+    - "kadıpaşa"
+    - "pazarcı"
+    - "hisariçi"
+    - "keykubat"
+    - "çarşı"
+    - "sugözü"
+    - "kızlarpınarı"
+    - "emiralipaşa"
+
+# Detay sayfasında bina yaşı / kat bilgisi bulunamazsa ilan yine gönderilsin mi?
+send_if_unknown: true

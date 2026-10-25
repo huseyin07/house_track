@@ -1,0 +1,36 @@
+name: Ev ilanı kontrol
+
+on:
+  schedule:
+    - cron: "*/20 * * * *"   # her 20 dakikada bir (GitHub bazen birkaç dk geciktirir)
+  workflow_dispatch:          # Actions sekmesinden elle çalıştırmak için
+
+permissions:
+  contents: write             # görülen ilan listesini (seen.json) kaydetmek için
+
+concurrency:
+  group: ev-bot
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: İlanları kontrol et
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python bot.py
+      - name: Görülen ilanları kaydet
+        run: |
+          git config user.name "ev-bot"
+          git config user.email "ev-bot@users.noreply.github.com"
+          git add seen.json
+          git diff --cached --quiet || (git commit -m "seen güncellendi [skip ci]" && git push)
