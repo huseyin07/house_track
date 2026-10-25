@@ -27,7 +27,7 @@ ROOT = Path(__file__).parent
 SEEN_FILE = ROOT / "seen.json"
 CONFIG_FILE = ROOT / "config.yaml"
 
-TG_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", "")
+TG_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", "").strip()
 TG_CHAT = os.environ.get("TELEGRAM_CHAT_ID", "")
 
 HEADERS = {
@@ -251,9 +251,16 @@ def resolve_chat_id(state):
         return
     if not TG_TOKEN:
         return
+    dbg = state["telegram_debug"] = {"token_len": len(TG_TOKEN), "token_has_space": TG_TOKEN != TG_TOKEN.strip()}
     try:
-        r = http.get(f"https://api.telegram.org/bot{TG_TOKEN}/getUpdates", timeout=30)
-        for u in reversed(r.json().get("result", [])):
+        me = http.get(f"https://api.telegram.org/bot{TG_TOKEN.strip()}/getMe", timeout=30).json()
+        dbg["getMe"] = {"ok": me.get("ok"), "username": (me.get("result") or {}).get("username"),
+                        "error": me.get("description")}
+        r = http.get(f"https://api.telegram.org/bot{TG_TOKEN.strip()}/getUpdates", timeout=30)
+        data = r.json()
+        dbg["getUpdates"] = {"ok": data.get("ok"), "count": len(data.get("result") or []),
+                             "error": data.get("description")}
+        for u in reversed(data.get("result", [])):
             msg = u.get("message") or u.get("edited_message") or {}
             cid = (msg.get("chat") or {}).get("id")
             if cid:
@@ -263,6 +270,7 @@ def resolve_chat_id(state):
                 return
         print("Chat ID bulunamadı: Telegram'da bota bir mesaj at.")
     except Exception as e:
+        dbg["exception"] = repr(e)[:200]
         print("getUpdates hatası:", e)
 
 
