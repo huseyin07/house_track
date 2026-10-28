@@ -441,6 +441,12 @@ def main():
             if ok:
                 tg_send(format_msg(l, info), l.get("image"))
                 sent += 1
+                # Kişisel asistan (gunluk-ajan) okuyabilsin diye eşleşen ilanın özetini sakla
+                state.setdefault("matches", []).append({
+                    "id": l["id"], "title": l.get("title"), "price": l.get("price"), "m2": l.get("m2"),
+                    "floor": (info or {}).get("floor"), "age": (info or {}).get("age"),
+                    "url": l["url"], "site": l["site"], "search": name, "ts": int(time.time()),
+                })
             else:
                 print(f"  elendi ({why}): {l['url']}")
         time.sleep(random.uniform(2, 5))
@@ -449,6 +455,9 @@ def main():
     if any_first:
         tg_send(f"✅ Ev botu yeni aramayı izlemeye başladı. Şu an {len(seen)} ilan kayıtlı; "
                 "bundan sonra çıkan yeni ilanlar buraya gelecek.")
+
+    state["matches"] = state.get("matches", [])[-100:]  # son 100 eşleşen ilan
+    state["last_run"] = int(time.time())
 
     # 60 günden eski kayıtları temizle
     cutoff = time.time() - 60 * 86400
