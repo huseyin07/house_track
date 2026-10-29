@@ -243,7 +243,19 @@
 "emlakjet:20035900": 1793275446,
 "emlakjet:20035844": 1793275446,
 "emlakjet:20035451": 1793275446,
-"emlakjet:20035445": 1793275446
+"emlakjet:20035445": 1793275446,
+"emlakjet:20037975": 1793298660,
+"emlakjet:20037851": 1793298660,
+"emlakjet:20037837": 1793298660,
+"emlakjet:20037831": 1793298660,
+"emlakjet:20037792": 1793298660,
+"emlakjet:20037765": 1793298660,
+"emlakjet:20037759": 1793298660,
+"emlakjet:20037705": 1793298660,
+"emlakjet:20037277": 1793298660,
+"emlakjet:20037192": 1793298666,
+"emlakjet:20037191": 1793298666,
+"emlakjet:20037127": 1793298666
 },
 "errors": {},
 "initialized": [
@@ -267,6 +279,19 @@
 },
 "chat_id": 1339929901,
 "last_error": {},
-"matches": [],
-"last_run": 1793275449
+"matches": [
+{
+"id": "emlakjet:20037277",
+"title": "YENİ",
+"price": 3800000,
+"m2": 60,
+"floor": "5",
+"age": 1,
+"url": "https://www.emlakjet.com/ilan/alanya-damlatas-caddesi-uzeerinde-satilik-11-daire-20037277",
+"site": "emlakjet",
+"search": "Emlakjet - Alanya (merkez mahalleleri için)",
+"ts": 1793298666
+}
+],
+"last_run": 1793298670
 }
