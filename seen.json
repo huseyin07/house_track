@@ -339,7 +339,22 @@
 "emlakjet:20052288": 1793724638,
 "emlakjet:20055560": 1793743842,
 "emlakjet:20055334": 1793743842,
-"emlakjet:20049431": 1793758979
+"emlakjet:20049431": 1793758979,
+"emlakjet:20059298": 1793814148,
+"emlakjet:19889536": 1793814154,
+"emlakjet:20060065": 1793814154,
+"emlakjet:20059656": 1793814154,
+"emlakjet:20059603": 1793814154,
+"emlakjet:20059589": 1793814154,
+"emlakjet:20059211": 1793814154,
+"emlakjet:20059098": 1793814154,
+"emlakjet:20058931": 1793814154,
+"emlakjet:20058687": 1793814154,
+"emlakjet:20058651": 1793814154,
+"emlakjet:20057962": 1793814154,
+"emlakjet:20057748": 1793814154,
+"emlakjet:20056593": 1793814154,
+"emlakjet:20056333": 1793814154
 },
 "errors": {},
 "initialized": [
@@ -399,7 +414,19 @@
 "site": "emlakjet",
 "search": "Emlakjet - Alanya (merkez mahalleleri için)",
 "ts": 1793613324
+},
+{
+"id": "emlakjet:20059298",
+"title": "YENİ",
+"price": 3325000,
+"m2": 55,
+"floor": "5",
+"age": null,
+"url": "https://www.emlakjet.com/ilan/11-daire-payallar-20059298",
+"site": "emlakjet",
+"search": "Emlakjet - Payallar",
+"ts": 1793814152
 }
 ],
-"last_run": 1793758983
+"last_run": 1793814156
 }
