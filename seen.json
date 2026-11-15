@@ -469,7 +469,14 @@
 "emlakjet:20095880": 1794669568,
 "emlakjet:20095877": 1794669568,
 "emlakjet:20098877": 1794699708,
-"emlakjet:20098778": 1794699708
+"emlakjet:20098778": 1794699708,
+"emlakjet:20099228": 1794743996,
+"emlakjet:20100255": 1794744003,
+"emlakjet:20099764": 1794744003,
+"emlakjet:20099122": 1794744003,
+"emlakjet:20099052": 1794744003,
+"emlakjet:20099041": 1794744003,
+"emlakjet:20099030": 1794744003
 },
 "errors": {},
 "initialized": [
@@ -565,7 +572,19 @@
 "site": "emlakjet",
 "search": "Emlakjet - Konaklı",
 "ts": 1794246474
+},
+{
+"id": "emlakjet:20099228",
+"title": "YENİ",
+"price": 2200000,
+"m2": 50,
+"floor": "5.kat",
+"age": 0,
+"url": "https://www.emlakjet.com/ilan/cok-acil-satilik-deniz-manzarali-havuzlu-kupon-firsat-yatirimlik-20099228",
+"site": "emlakjet",
+"search": "Emlakjet - Payallar",
+"ts": 1794744000
 }
 ],
-"last_run": 1794715775
+"last_run": 1794744005
 }
