@@ -589,7 +589,8 @@
 "emlakjet:20132710": 1795563750,
 "emlakjet:20132667": 1795563750,
 "emlakjet:20132110": 1795563750,
-"emlakjet:20127500": 1795563750
+"emlakjet:20127500": 1795563750,
+"emlakjet:20133276": 1795587815
 },
 "errors": {},
 "initialized": [
@@ -709,7 +710,19 @@
 "site": "emlakjet",
 "search": "Emlakjet - Payallar",
 "ts": 1795286466
+},
+{
+"id": "emlakjet:20133276",
+"title": "YENİ",
+"price": 3500000,
+"m2": 56,
+"floor": "2.kat",
+"age": 2,
+"url": "https://www.emlakjet.com/ilan/alanya-payallar-da-havuzlu-satilik-11-daire-20133276",
+"site": "emlakjet",
+"search": "Emlakjet - Payallar",
+"ts": 1795587819
 }
 ],
-"last_run": 1795563754
+"last_run": 1795587826
 }
