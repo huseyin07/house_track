@@ -590,7 +590,24 @@
 "emlakjet:20132667": 1795563750,
 "emlakjet:20132110": 1795563750,
 "emlakjet:20127500": 1795563750,
-"emlakjet:20133276": 1795587815
+"emlakjet:20133276": 1795587815,
+"emlakjet:20134645": 1795628312,
+"emlakjet:20123132": 1795628316,
+"emlakjet:20137261": 1795628322,
+"emlakjet:20136498": 1795628322,
+"emlakjet:20135601": 1795628322,
+"emlakjet:20135390": 1795628322,
+"emlakjet:20134300": 1795628322,
+"emlakjet:20133963": 1795628322,
+"emlakjet:20133955": 1795628322,
+"emlakjet:20130083": 1795628322,
+"emlakjet:20129940": 1795628322,
+"emlakjet:20124329": 1795628322,
+"emlakjet:20123727": 1795628322,
+"emlakjet:20123613": 1795628322,
+"emlakjet:20123604": 1795628322,
+"emlakjet:20123432": 1795628322,
+"emlakjet:20123412": 1795628322
 },
 "errors": {},
 "initialized": [
@@ -722,7 +739,19 @@
 "site": "emlakjet",
 "search": "Emlakjet - Payallar",
 "ts": 1795587819
+},
+{
+"id": "emlakjet:20134645",
+"title": "YENİ",
+"price": 2450000,
+"m2": 50,
+"floor": "6.kat",
+"age": 0,
+"url": "https://www.emlakjet.com/ilan/payallarda-satilik-11-daire-deniz-ve-doga-manzarali-20134645",
+"site": "emlakjet",
+"search": "Emlakjet - Payallar",
+"ts": 1795628316
 }
 ],
-"last_run": 1795587826
+"last_run": 1795628326
 }
